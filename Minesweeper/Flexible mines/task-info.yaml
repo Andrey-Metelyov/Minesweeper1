@@ -132,8 +132,28 @@ files:
     }
   learner_created: true
 feedback_link: https://hyperskill.org/projects/8/stages/47/implement#comment
-status: Solved
+status: Failed
 feedback:
-  message: Congratulations!
-  time: Sat, 14 Aug 2021 14:24:02 UTC
-record: -1
+  message: |-
+    Wrong answer in test #1
+
+    One of the characters is not equal to either &#39;X&#39; or &#39;.&#39;.
+    In this line: &quot;....111..&quot;.
+
+    Please find below the output of your program during this failed test.
+    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
+
+    ---
+
+    How many mines do you want on the field? &gt; 1
+    .........
+    .........
+    .........
+    .........
+    .........
+    ....111..
+    ....1X1..
+    ....111..
+    .........
+  time: Sat, 14 Aug 2021 14:35:43 UTC
+record: 2

@@ -1,6 +1,8 @@
 package minesweeper
 
 import java.lang.IllegalArgumentException
+import kotlin.math.min
+import kotlin.math.max
 import kotlin.random.Random
 
 class GameBoard(val height: Int, val width: Int, mines: Int) {
@@ -28,8 +30,35 @@ class GameBoard(val height: Int, val width: Int, mines: Int) {
         }
     }
     fun print() {
-        for (row in grid) {
-            println(row.joinToString("") { it.ch })
+        for ((i, row) in grid.withIndex()) {
+//            System.err.println(row.joinToString("") { it.ch })
+            for ((j, cell) in row.withIndex()) {
+                print(
+                    if (cell != CELL_STATE.MINE) {
+                        val mines = getMinesAround(i, j)
+                        if (mines > 0) {
+                            mines
+                        } else {
+                            cell.ch
+                        }
+                    } else {
+                        cell.ch
+                    }
+                )
+            }
+            println()
         }
+    }
+
+    private fun getMinesAround(row: Int, col: Int): Int {
+        var count = 0
+        for (i in max(0, row - 1)..min(height - 1, row + 1)) {
+            for (j in max(0, col - 1)..min(width - 1, col + 1)) {
+                if (grid[i][j] == CELL_STATE.MINE) {
+                    count++
+                }
+            }
+        }
+        return count
     }
 }
